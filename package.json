@@ -1,7 +1,7 @@
 {
-  "name": "@cairnsgames/templatelib",
-  "version": "1.0.4",
-  "description": "Template for future libraries",
+  "name": "@cairnsgames/ui-components",
+  "version": "1.0.0",
+  "description": "Extended react-bootstrap components",
   "keywords": [
     "react",
     "typescript",
@@ -10,7 +10,7 @@
   "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cairnsgames/lib-template.git"
+    "url": "git+https://github.com/cairnsgames/ui-components.git"
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
