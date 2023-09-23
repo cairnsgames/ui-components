@@ -4,8 +4,19 @@ type KeyValue = {
   key: string;
   value: string;
 };
+type useLocationResult = {
+  href: string,
+  hash: string,
+  params: KeyValue[],
+  hostname: string,
+  port: string,
+  pathname: string,
+  path: string[],
+  protocol: string,
+  set: (url: string) => void
+}
 
-export const loadURLDetails = (valid: string[] = []) => {
+export const loadURLDetails  = (valid: string[] = []) : useLocationResult => {
   let hash = window.location.hash;
   hash = hash.split("?")[0].replace("#", "");
 
@@ -31,7 +42,7 @@ export const loadURLDetails = (valid: string[] = []) => {
     pathname: window.location.pathname,
     path: window.location.pathname.split(/\//).filter((x) => x !== ""),
     protocol: window.location.protocol,
-    set: (url: string) => { console.log(url); },
+    set: (url: string) => { console.log("set", url); }
   };
 };
 
