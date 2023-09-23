@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useRawData = (url) => {
+const useRawData = (url: string) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);

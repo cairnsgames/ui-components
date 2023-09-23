@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const SplashScreen = ({color, children}) => {
+interface SplashScreenProps {
+  color: string;
+  children: React.ReactNode;
+}
+const SplashScreen = ({color, children}: SplashScreenProps) => {
   return <div style={{ backgroundColor: color, position: "absolute", top: "0px", bottom:"0px", left: "0px", right:"0px" }} >
     {children}
   </div>

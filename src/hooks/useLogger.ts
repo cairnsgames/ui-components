@@ -15,14 +15,14 @@ import { useState, useEffect } from "react";
  * `log`, `warn`, `error`, and all other console functions
  */
 const useLogger = (
-  loggingType,
-  level = undefined
+  loggingType: string,
+  level: string | undefined = undefined
 ) => {
-  const [loggingLevel, setLoggingLevel] = useState(level);
+  const [loggingLevel, setLoggingLevel] = useState<string | undefined>(level);
   const loggingPrefix = "[" + loggingType + "]";
 
   const loadLoggingLevel = () => {
-      const config = JSON.parse(localStorage.getItem("logging"), "{}");
+      const config = JSON.parse(localStorage.getItem("logging") ?? "{}");
       if (config && config[loggingType]) {
         setLoggingLevel(config[loggingType]);
       } 
@@ -40,32 +40,32 @@ const useLogger = (
   },[])
 
 
-  function debug() {
+  function debug(...args: any[]) {
     if (loggingLevel === "info" || loggingLevel === "debug" || loggingLevel === "log") {
-      console.log(loggingPrefix, "[debug]", ...arguments);
+      console.log(loggingPrefix, "[debug]", ...args);
     }
   }
-  function info() {
+  function info(...args: any[]) {
     if (loggingLevel === "info" || loggingLevel === "debug" || loggingLevel === "log") {
-      console.log(loggingPrefix, "[info]", ...arguments);
+      console.log(loggingPrefix, "[info]", ...args);
     }
   }
-  function log() {
+  function log(...args: any[]) {
     if (loggingLevel === "log" || loggingLevel === "debug" || loggingLevel === "info") {
-      console.log(loggingPrefix, ...arguments);
+      console.log(loggingPrefix, ...args);
     }
   }
-  function warn() {
+  function warn(...args: any[]) {
     if (
       loggingLevel === "warn" ||
       loggingLevel === "log" || 
       loggingLevel === "debug" ||      
       loggingLevel === "info"
     ) {
-      console.warn(loggingPrefix, ...arguments);
+      console.warn(loggingPrefix, ...args);
     }
   }
-  function error() {
+  function error(...args: any[]) {
     if (
       loggingLevel === "error" ||
       loggingLevel === "warn" ||
@@ -73,11 +73,12 @@ const useLogger = (
       loggingLevel === "debug"  ||
       loggingLevel === "info"
     ) {
-      console.error(loggingPrefix, ...arguments);
+      console.error(loggingPrefix, ...args);
     }
   }
 
-  const logger = {};
+  const logger: any = {};
+  logger.debug = debug;
   logger.info = info;
   logger.log = log;
   logger.warn = warn;
@@ -89,22 +90,15 @@ const useLogger = (
   logger.debug = console.debug;
   logger.dir = console.dir;
   logger.dirxml = console.dirxml;
-  logger.exception = console.exception;
   logger.group = console.group;
   logger.groupCollapsed = console.groupCollapsed;
   logger.groupEnd = console.groupEnd;
-  logger.markTimeline = console.markTimeline;
-  logger.profile = console.profile;
-  logger.profileEnd = console.profileEnd;
-  logger.JSON = console.JSON;
   logger.table = console.table;
   logger.time = console.time;
   logger.timeEnd = console.timeEnd;
   logger.timeLog = console.timeLog;
   logger.timeStamp = console.timeStamp;
   logger.trace = console.trace;
-  logger.timeline = console.timeline;
-  logger.timelineEnd = console.timelineEnd;
   logger.timeStamp = console.timeStamp;
 
   return { logger, log, warn, error };

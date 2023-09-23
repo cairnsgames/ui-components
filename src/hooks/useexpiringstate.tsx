@@ -1,9 +1,4 @@
-import React, {useState, useEffect} from 'react';
-
-interface ExpiringStateProps {
-  defaultValue: any;
-  delay?: number;
-}
+import  {useState, useEffect} from 'react';
 
 const useExpiringState = (defaultValue: any, delay: number = 1500) => {
   const [value, setValue] = useState(defaultValue);
@@ -16,7 +11,7 @@ const useExpiringState = (defaultValue: any, delay: number = 1500) => {
 
       return () => clearTimeout(timeoutId);
     }
-    return null;
+    return;
   }, [value]);
 
   return [value, setValue];

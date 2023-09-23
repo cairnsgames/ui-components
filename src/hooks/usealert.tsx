@@ -1,34 +1,42 @@
-import React, { memo } from "react";
-import useExpiringState from "./useexpiringstate"
+import React, { ReactElement, memo } from "react";
+import useExpiringState from "./useexpiringstate";
+import {Alert as RBAlert} from "react-bootstrap";
 
 interface alertProps {
     defaultValue?: string;
     delay?: number;
     variant?: string;
-    dismissible?: boolean;    
+    dismissible?: boolean;
 }
 
-/**
- * This is a custom hook in JavaScript that creates an alert component with an expiring state.
- * @returns An object with properties: `message`, `setMessage` and `Alert`.
- * @param options - An object containing the properties passed to the usealert hook.
- * @param options.defaultValue - The default value of the alert.
- * @param options.delay - The delay of the alert.
- * @param options.variant - The variant of the alert. (Bootstrap variant)
- * @usage Use the Alert where you want it to be displayed. Then setMessage with the text to be displayed
- */
-const useAlert = (options: alertProps) => {
-    const [message, setMessage] = useExpiringState(options.defaultValue ?? "", options.delay || 4000);
+interface alertReturnType {
+    message: string;
+    setMessage: (message: string) => void;
+    Alert: React.FC;
+}
 
-    const DisplayAlert = () => {
+const useAlert = (props: alertProps): alertReturnType => {
+    const [message, setMessage] = useExpiringState(
+        props.defaultValue ?? "",
+        props.delay || 4000
+    );
+
+    const DisplayAlert = (): ReactElement => {
         return (
-            <Alert show={message !== ""} variant={options.variant ?? "danger"} transition={true} dismissible={options.dismissible ?? "false"}>{message}</Alert>
+            <RBAlert
+                show={message !== ""}
+                variant={props.variant ?? "danger"}
+                transition={true}
+                dismissible={props.dismissible ?? false}
+            >
+                {message}
+            </RBAlert>
         );
-    }
+    };
 
     const Alert = memo(DisplayAlert);
 
     return { message, setMessage, Alert };
-}
+};
 
 export default useAlert;

@@ -1,5 +1,5 @@
 const useScrollTo = () => {
-  const scrollTo = (ref) => {
+  const scrollTo = (ref: any) => {
     window.scrollTo({
       top: ref.offsetTop,
       behavior: "smooth",

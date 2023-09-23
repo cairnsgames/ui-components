@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const useSorting = (data) => {
-    const [field, setField] = useState("");
-    const [direction, setDirection] = useState("asc");
+const useSorting = (data: []) => {
+    const [field, setField] = useState<string>("");
+    const [direction, setDirection] = useState<string>("asc");
 
-    const setSortField = (fieldToSort) => {
+    const setSortField = (fieldToSort : string) => {
         if (fieldToSort === field) {
             setDirection(direction === "asc" ? "desc" : "asc");
         } else {

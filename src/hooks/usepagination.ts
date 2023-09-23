@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-const usePagination = (data, defaultItemsPerPage = 10) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage ] = useState(defaultItemsPerPage)
+
+
+const usePagination = (data: [], defaultItemsPerPage: number = 10) => {
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [itemsPerPage, setItemsPerPage ] = useState<number>(defaultItemsPerPage)
 
     const maxPage = data ? Math.ceil(data.length / itemsPerPage) : 0;
 
@@ -17,9 +19,9 @@ const usePagination = (data, defaultItemsPerPage = 10) => {
     const prev = () => {
         setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
     };
-    const jump = (page) => {
+    const jump = (page : number) => {
         const pageNumber = Math.max(1, page);
-        setCurrentPage((currentPage) => Math.min(pageNumber, maxPage));
+        setCurrentPage(() => Math.min(pageNumber, maxPage));
     };
 
     return { data: currentData, itemsPerPage, setItemsPerPage, nextPage: next, prevPage: prev, jumpToPage: jump, page: currentPage, setPage: setCurrentPage, maxPage };

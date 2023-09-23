@@ -1,7 +1,7 @@
-const dateAge = (dateString) => {
+const dateAge = (dateString: string, dateNow: string = Date()) => {
     const commentDate = new Date(dateString);
-    const now = new Date();
-    const timeDiff = Math.abs(now - commentDate);
+    const now = new Date(dateNow);
+    const timeDiff = Math.abs(now.getTime() - commentDate.getTime());
     const minutes = Math.floor(timeDiff / 60000);
     const hours = Math.floor(timeDiff / 3600000);
     const days = Math.floor(timeDiff / 86400000);

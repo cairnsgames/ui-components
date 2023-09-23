@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-const useTitle = (initialTitle) => {
-  const [title, setTitle] = useState(initialTitle);
+const useTitle = (initialTitle: string) => {
+  const [title, setTitle] = useState<string>(initialTitle);
 
   const updateTitle = () => {
     document.title = title;

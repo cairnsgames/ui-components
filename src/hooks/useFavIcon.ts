@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
  *  <link id="dynamic-favicon" rel="icon" href="%PUBLIC_URL%/favicon.ico" />
  */
 
-const changeFavicon = src => {
+const changeFavicon = (src: string) => {
   const head = document.head || document.getElementsByTagName('head')[0]
   const link = document.createElement('link')
   const oldLink = document.getElementById('dynamic-favicon')
@@ -18,7 +18,7 @@ const changeFavicon = src => {
   head.appendChild(link)
 }
 
-const useFavIcon = iconURL => {
+const useFavIcon = (iconURL: string) => {
   const [favIcon, setFavIcon] = useState(iconURL)
 
   useEffect(() => {

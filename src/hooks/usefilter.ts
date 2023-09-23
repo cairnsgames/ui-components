@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const useFilter = (data, fields) => {
+const useFilter = (data: any[], fields: string[]) => {
   const [value, setValue] = useState("");
 
-  const setValidatedValue = (value) => {
+  const setValidatedValue = (value: string) => {
     if (typeof value === "string") {
       setValue(value);
     }

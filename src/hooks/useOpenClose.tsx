@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import PlayCircle from "react-bootstrap-icons/dist/icons/play-circle";
+import { PlayCircle } from "react-bootstrap-icons";
 
-const useOpenClose = (initialState = false) => {
+interface OpenCloseProps {
+  color: string;
+  style: React.CSSProperties;
+  className: string;
+}
+
+const useOpenClose = (initialState: boolean = false) => {
   const [show, setShow] = useState(initialState);
-  const OpenClose = (props) => {
+  const OpenClose = (props: OpenCloseProps) => {
     const style = {
       color: props.color || "red",
       rotate: show ? "90deg" : "0deg",

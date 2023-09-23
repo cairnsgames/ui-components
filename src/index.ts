@@ -6,18 +6,20 @@ import { default as useOpenClose } from './hooks/useOpenClose';
 import { default as useScrollTo } from './hooks/useScrollTo';
 import { default as useSplash } from './hooks/useSplash';
 import { default as useFile } from './hooks/useFile';
-import { default as useGlobalState } from './hooks/useGlobalState';
-import { default as usePubSub } from './hooks/usePubSub';
+// import { default as useGlobalState } from './hooks/useGlobalState';
+// import { default as usePubSub } from './hooks/usePubSub.js';
 import { default as useLogger } from './hooks/useLogger';
 import { default as useDebounceState } from './hooks/usedebouncestate';
 import { default as useFilter } from './hooks/usefilter';
 import { default as usePagination } from './hooks/usepagination';
 import { default as useRawData } from './hooks/userawdata';
 import { default as useSorting } from './hooks/usesorting';
-export { default as useExpiringState } from './hooks/useexpiringstate';
+import { default as useExpiringState } from './hooks/useexpiringstate';
 import { default as useAlert } from './hooks/usealert';
 
-exports = {
+import { default as dateAge } from './functions/dateage';
+
+export {
     useFavIcon,
     useTitle,
     useLocation,
@@ -25,8 +27,8 @@ exports = {
     useScrollTo,
     useSplash,
     useFile,
-    useGlobalState,
-    usePubSub,
+    // useGlobalState,
+    // usePubSub,
     useLogger,
     useDebounceState,
     useFilter,
@@ -34,5 +36,7 @@ exports = {
     useRawData,
     useSorting,
     useExpiringState,
-    useAlert
+    useAlert,
+
+    dateAge
 }
