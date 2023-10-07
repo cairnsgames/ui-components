@@ -19,6 +19,8 @@ import { default as useAlert } from './hooks/usealert';
 
 import { default as dateAge } from './functions/dateage';
 
+import { default as Link } from './components/link/link';
+
 export {
     useFavIcon,
     useTitle,
@@ -38,5 +40,7 @@ export {
     useExpiringState,
     useAlert,
 
-    dateAge
+    dateAge,
+
+    Link
 }
